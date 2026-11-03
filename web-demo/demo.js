@@ -316,6 +316,25 @@ function out(sel, msg, kind) {
 
 /* ---------- 初始化 ---------- */
 function init() {
+  // 侧边导航切换
+  $$('.navitem').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.navitem').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const v = btn.dataset.view;
+      $$('.view').forEach(s => s.classList.remove('active'));
+      const target = $('#view-' + v);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // 支持 ?view=write|books|config 直达指定页面（也便于验证）
+  const viewParam = new URLSearchParams(location.search).get('view');
+  if (viewParam && ['write', 'books', 'config'].includes(viewParam)) {
+    const btn = document.querySelector('.navitem[data-view="' + viewParam + '"]');
+    if (btn) btn.click();
+  }
+
   // 写作台项目下拉
   const sel = $('#w-book');
   if (sel) {
