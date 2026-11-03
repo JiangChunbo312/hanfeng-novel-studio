@@ -309,69 +309,211 @@
         </div>
       </div>
       <div class="demo-note">
-        ⚠️ <b>在线演示不含任何 API Key。</b>本页仅展示配置界面。本地运行时，你的 Key 只保存在 <code>config.local.json</code>，不会上传到任何服务器。
+        ⚠️ <b>在线演示不含任何 API Key。</b>本页完整展示配置功能框架，所有内容为占位示例。本地运行时，你的 Key 只保存在 <code>config.local.json</code>，不会上传到任何服务器。
       </div>
       <div class="cols">
         <div class="card">
           <h2>服务商连接</h2>
           <p class="hint">支持 DeepSeek / Kimi / 智谱 / 通义 / 火山豆包 / OpenRouter / 本地 Ollama · LM Studio。</p>
+          <div class="row" style="margin-bottom:12px">
+            <button class="btn primary" id="test-all-btn">🔍 一键测试全部模型</button>
+            <span class="hint" style="align-self:center;max-width:62%">逐个发一条极短请求，测连通与额度；结果分「可用 / 不可用」，不可用的可一键删除，故障转移就不再轮换到它。</span>
+          </div>
+          <div id="test-all-result">
+            <div class="tgroup good">
+              <div class="tgroup-h">✅ 可用（6）</div>
+              <div class="titem"><div class="tinfo"><b>火山豆包 · doubao-seed-2-0-lite-260428</b><span class="tmsg">上次测试可用 · 342ms</span></div></div>
+              <div class="titem"><div class="tinfo"><b>火山豆包 · doubao-seed-2-0-code-preview-260215</b><span class="tmsg">上次测试可用 · 358ms</span></div></div>
+              <div class="titem"><div class="tinfo"><b>七牛 Conatus · qiniu/conatus-free</b><span class="tmsg">上次测试可用 · 287ms</span></div></div>
+              <div class="titem"><div class="tinfo"><b>书生(InternLM) · Atria-Dawn</b><span class="tmsg">上次测试可用 · 401ms</span></div></div>
+              <div class="titem"><div class="tinfo"><b>商汤日日新 · sensenova-6.8-flash-lite</b><span class="tmsg">上次测试可用 · 366ms</span></div></div>
+              <div class="titem"><div class="tinfo"><b>魔搭社区 · Qwen/Qwen3.5-27B</b><span class="tmsg">上次测试可用 · 312ms</span></div></div>
+            </div>
+            <div class="tgroup bad">
+              <div class="tgroup-h">❌ 不可用（1，点删除后任务不再轮换到）</div>
+              <div class="titem">
+                <div class="tinfo"><b>魔搭社区 · ZhipuAI/GLM-4.7-Flash</b><span class="tmsg">401 Unauthorized · 上次测试不可用</span></div>
+                <button class="btn mini t-del">删除</button>
+              </div>
+            </div>
+          </div>
           <div id="providers">
-            <div style="padding:8px 0;border-bottom:1px solid var(--line)">
-              <div class="row" style="gap:8px">
-                <span class="tag">火山豆包</span><code class="hint">https://ark.cn-beijing.volces.com/api/v3</code>
-                <span class="tag dim">Key 已保存</span>
+            <div class="pitem" data-i="0">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="火山豆包"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="volc"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://ark.cn-beijing.volces.com/api/v3"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="doubao-seed-2-0-lite-260428,doubao-seed-2-0-code-preview-260215"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="600"></span>
               </div>
             </div>
-            <div style="padding:8px 0;border-bottom:1px solid var(--line)">
-              <div class="row" style="gap:8px">
-                <span class="tag">魔搭社区(免费)</span><code class="hint">https://api-inference.modelscope.cn/v1</code>
-                <span class="tag dim">Key 已保存</span>
+            <div class="pitem" data-i="1">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="魔搭社区(免费)"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="modelscope"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://api-inference.modelscope.cn/v1"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="Qwen/Qwen3.5-27B,Qwen/Qwen3.5-35B-A3B,ZhipuAI/GLM-4.7-Flash"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="300"></span>
               </div>
             </div>
-            <div style="padding:8px 0;border-bottom:1px solid var(--line)">
-              <div class="row" style="gap:8px">
-                <span class="tag">七牛 Conatus(免费)</span><code class="hint">https://api.qnaigc.com/v1</code>
-                <span class="tag dim">Key 已保存</span>
+            <div class="pitem" data-i="2">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="七牛 Conatus(免费)"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="qiniu"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://api.qnaigc.com/v1"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="qiniu/conatus-free"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="300"></span>
               </div>
             </div>
-            <div style="padding:8px 0;border-bottom:1px solid var(--line)">
-              <div class="row" style="gap:8px">
-                <span class="tag">书生(InternLM)</span><code class="hint">https://discovery-api.intern-ai.org.cn/v1</code>
-                <span class="tag dim">Key 已保存</span>
+            <div class="pitem" data-i="3">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="书生(InternLM)"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="shusheng"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://discovery-api.intern-ai.org.cn/v1"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="Atria-Dawn"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="600"></span>
               </div>
             </div>
-            <div style="padding:8px 0;border-bottom:1px solid var(--line)">
-              <div class="row" style="gap:8px">
-                <span class="tag">商汤日日新</span><code class="hint">https://token.sensenova.cn/v1</code>
-                <span class="tag dim">Key 已保存</span>
+            <div class="pitem" data-i="4">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="商汤日日新"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="senstime"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://token.sensenova.cn/v1"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="sensenova-6.8-flash-lite"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="180"></span>
+              </div>
+            </div>
+            <div class="pitem" data-i="5">
+              <div class="prow">
+                <span class="fld w120"><b>名称</b><input class="f-label" value="Dots(小红书·免费)"></span>
+                <span class="fld w90"><b>ID</b><input class="f-id" value="dots"></span>
+                <span class="tag dim mono keytag" title="当前已保存的 Key">（Key 已保存）</span>
+                <button class="btn mini f-test">测试连接</button>
+                <button class="btn mini f-del">删除</button>
+              </div>
+              <span class="fld"><b>Base URL <i>(服务商接口地址，以 /v1 结尾)</i></b>
+                <input class="f-base mono" value="https://note3-prev-api.askdiandian.com/v1"></span>
+              <div class="prow" style="margin-top:6px">
+                <span class="fld grow"><b>模型名 <i>(每个用逗号隔开)</i></b>
+                  <input class="f-model mono" value="dots3-note-prev"></span>
+                <span class="fld grow"><b>API Key <i>(留空=保持不变；本地模型可留空)</i></b>
+                  <input class="f-key" type="text" placeholder="粘贴你的 Key，保存后不再明文显示"></span>
+                <span class="fld w80"><b>超时(秒)</b><input class="f-timeout" type="number" value="180"></span>
               </div>
             </div>
           </div>
           <div class="row">
-            <select id="preset-sel" disabled><option>DeepSeek（示例预设）</option></select>
-            <button class="btn" id="add-provider" disabled>+ 新增服务商</button>
+            <select id="preset-sel"><option>DeepSeek（示例预设）</option><option>火山豆包</option><option>魔搭社区</option></select>
+            <button class="btn" id="add-provider">+ 新增服务商</button>
           </div>
+          <div id="test-out" class="out demo-static">演示：一键测试会在这里输出「✅ 测试完成：可用 N / 不可用 M」</div>
         </div>
 
         <div class="card">
           <h2>角色 → 模型 路由</h2>
-          <p class="hint">写手用强模型，审计 / 摘要 / 事实抽取用便宜的快模型。留空则回落 default。</p>
-          <div class="demo-static" style="font-size:13px;background:var(--panel-2);padding:10px;border-radius:8px">
-            default → modelscope:Qwen/Qwen3.5-27B, volc:doubao-seed-2-0-lite-260428
-            写手(writer) → volc:doubao-seed-2-0-lite-260428, qiniu:qiniu/conatus-free
-            审计(auditor) → modelscope:Qwen/Qwen3.5-35B-A3B
-            摘要(summary) → modelscope:Qwen/Qwen3.5-27B
+          <p class="hint">省钱的要害：写手用强模型，审计 / 摘要 / 事实抽取用便宜的快模型。留空则回落 default。
+            每个角色可配<b>模型链</b>（英文逗号分隔，前面的优先）——某模型超时无响应或报错，自动切换下一个，保证流水线不断。</p>
+          <div id="routes">
+            <table>
+              <tr><th style="width:180px">角色</th><th>模型链（英文逗号分隔，前面的优先）</th></tr>
+              <tr><td>默认（回落）</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-27B,modelscope:Qwen/Qwen3.5-35B-A3B,modelscope:ZhipuAI/GLM-4.7-Flash,volc:doubao-seed-2-0-mini-260428,dots:dots3-note-prev" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+                <div class="route-hint">可选模型链（按顺序尝试，超时自动切下一个）：
+                  <code class="rcode">volc:doubao-seed-2-0-lite-260428</code>
+                  <code class="rcode">qiniu:qiniu/conatus-free</code>
+                  <code class="rcode">modelscope:Qwen/Qwen3.5-27B</code>
+                  <code class="rcode">shusheng:Atria-Dawn</code>
+                  <code class="rcode">senstime:sensenova-6.8-flash-lite</code>
+                </div>
+              </td></tr>
+              <tr><td>规划师 · 本章意图</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-27B,volc:doubao-seed-2-0-lite-260428" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+              <tr><td>写手 · 正文</td><td>
+                <input type="text" class="route-input" value="volc:doubao-seed-2-0-lite-260428,qiniu:qiniu/conatus-free,modelscope:Qwen/Qwen3.5-27B" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+              <tr><td>观察者 · 事实抽取</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-27B,volc:doubao-seed-2-0-lite-260428" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+              <tr><td>审计员 · 一致性检查</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-35B-A3B,volc:doubao-seed-2-0-lite-260428" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+              <tr><td>修订者 · 定点改写</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-27B,volc:doubao-seed-2-0-lite-260428" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+              <tr><td>摘要 · 章节梗概</td><td>
+                <input type="text" class="route-input" value="modelscope:Qwen/Qwen3.5-27B,volc:doubao-seed-2-0-lite-260428" placeholder="（回落 default）" spellcheck="false" autocomplete="off" style="width:100%">
+              </td></tr>
+            </table>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <label class="fld w120" style="max-width:200px">单步超时（秒）
+              <input id="step-timeout" type="number" min="10" value="180" autocomplete="off" inputmode="numeric">
+            </label>
+            <span class="hint" style="align-self:flex-end;padding-bottom:6px">模型 N 秒内无响应即判超时，切下一个候选（0=不超时）</span>
           </div>
           <h2 class="mt">单价表（元 / 百万 token）</h2>
-          <p class="hint">只用于成本估算，免费模型留 0。</p>
-          <div class="demo-static" style="font-size:13px;background:var(--panel-2);padding:10px;border-radius:8px">
-            volc:doubao-seed-2-0-lite-260428 → ¥0
-            qiniu:qiniu/conatus-free → ¥0
-            modelscope:Qwen/Qwen3.5-27B → ¥0
-            modelscope:Qwen/Qwen3.5-35B-A3B → ¥0
+          <p class="hint">只用于成本估算，按所用服务商官网价格填。免费模型（如已接入的火山豆包）留 0 即可，成本面板会显示「免费」。</p>
+          <div id="prices">
+            <table>
+              <tr><th>模型</th><th>输入 元/百万</th><th>输出 元/百万</th></tr>
+              <tr><td class="mono">火山豆包 · doubao-seed-2-0-lite-260428</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">火山豆包 · doubao-seed-2-0-code-preview-260215</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">魔搭社区 · Qwen/Qwen3.5-27B</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">魔搭社区 · Qwen/Qwen3.5-35B-A3B</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">七牛 Conatus · qiniu/conatus-free</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">书生(InternLM) · Atria-Dawn</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">商汤日日新 · sensenova-6.8-flash-lite</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+              <tr><td class="mono">Dots · dots3-note-prev</td><td><input type="number" step="0.1" value="0" style="width:90px"></td><td><input type="number" step="0.1" value="0" style="width:90px"></td></tr>
+            </table>
           </div>
-          <div class="row"><button class="btn primary" id="save-config" disabled>保存配置</button></div>
-          <div id="save-out" class="out demo-static">演示页不保存配置</div>
+          <div class="row"><button class="btn primary" id="save-config">保存配置</button></div>
+          <div id="save-out" class="out demo-static">演示页不保存配置，本地运行时保存到 config.local.json</div>
         </div>
       </div>
     </section>
@@ -417,7 +559,7 @@ $$('.tabs-mini').forEach(tabbar => {
 });
 
 // 顶部几个按钮：只提示，不执行
-['#w-load','#w-plan','#w-write','#w-audit','#w-revise','#w-extract','#w-summary','#w-accept','#gen-title','#save-draft','#inspire-btn','#b-start-btn','#b-stop-btn']
+['#w-load','#w-plan','#w-write','#w-audit','#w-revise','#w-extract','#w-summary','#w-accept','#gen-title','#save-draft','#inspire-btn','#b-start-btn','#b-stop-btn','#test-all-btn','#save-config','#add-provider']
   .forEach(sel => {
     const el = $(sel);
     if (el) el.addEventListener('click', e => {
