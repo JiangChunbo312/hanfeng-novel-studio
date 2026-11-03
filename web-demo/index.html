@@ -28,14 +28,13 @@
     padding:5px 12px;border-radius:999px;backdrop-filter:blur(4px);
     pointer-events:none;letter-spacing:.5px;
   }
-  /* ---- 演示用卡片占位 ---- */
+  /* ---- 演示说明 ---- */
   .demo-note{
     background:var(--accent-soft);border:1px dashed var(--accent-line);
     color:var(--accent);border-radius:10px;padding:10px 14px;font-size:12.5px;margin:8px 0;
   }
   .demo-note code{background:rgba(59,91,219,.08);padding:1px 6px;border-radius:5px}
-  .pane.demo-static{white-space:pre-wrap;font-size:13px;color:var(--ink2);line-height:1.7}
-  /* 让演示页在窄屏下也好看 */
+  /* ---- 窄屏适配 ---- */
   @media (max-width:900px){
     .app{flex-direction:column}
     .sidebar{width:100%;flex:0 0 auto;height:auto;position:static;flex-direction:row;align-items:center;flex-wrap:wrap}
@@ -52,7 +51,7 @@
   <span>🖥️</span>
   <div>
     <b>寒峰小说工作台 · 在线演示</b>
-    <span>这是静态界面预览（数据为示例），完整功能需在本地运行。</span>
+    <span>完整功能界面展示，数据为样本示例（恋综编剧她只想搞钱）。</span>
   </div>
   <span class="tag">纯前端 · 无后端 · 无 API Key</span>
   <span class="tag">本地运行：<code>python server.py</code></span>
@@ -77,38 +76,32 @@
       </button>
     </nav>
     <div class="side-foot">
-      <span class="dot"></span>在线演示 · 数据为示例
+      <span class="dot"></span>在线演示 · 数据为样本
     </div>
   </aside>
 
   <!-- ============ 主区域 ============ -->
   <main class="main">
 
-    <!-- ===== 写作台 ===== -->
+    <!-- ===== 写作台（默认主视图） ===== -->
     <section class="view active" id="view-write">
       <div class="page-head">
         <div>
           <h1>写作台</h1>
-          <p class="sub">七步 AI 流水线：意图 → 写作 → 审计 → 改写 → 抽取 → 摘要 → 采纳</p>
+          <p class="sub" id="wh-meta">选择项目与章号，开始 AI 辅助创作</p>
         </div>
-        <div class="head-tags" id="wh-tags">
-          <span class="tag dim">项目：恋综编剧她只想搞钱</span>
-          <span class="tag dim">第 001 章</span>
-        </div>
+        <div class="head-tags" id="wh-tags"></div>
       </div>
 
       <div class="demo-note">
-        演示页数据为静态示例。本地运行时，这里会显示真实项目与章号，支持流式输出、批量连写、成本统计。
+        演示页使用样本项目「恋综编剧她只想搞钱」的真实数据（章节/意图/审计/抽取/摘要）。点击 ①→⑦ 可查看各步骤产物；本地运行时这些数据由 AI 实时生成。
       </div>
 
       <div class="write-sticky">
         <div class="toolbar">
           <div class="tb-group">
             <label class="tb-field">项目
-              <select id="w-book">
-                <option>恋综编剧她只想搞钱</option>
-                <option>我专收死局全城等我翻盘</option>
-              </select>
+              <select id="w-book"></select>
             </label>
             <label class="tb-field w70">章号
               <input id="w-chapter" type="number" min="1" value="1" autocomplete="off" inputmode="numeric">
@@ -126,36 +119,31 @@
             <button class="step ok" id="w-accept"><i>7</i>采纳</button>
           </div>
           <label class="tb-check"><input type="checkbox" id="w-autorun"> 一键跑完</label>
+          <label class="tb-check"><input type="checkbox" id="w-reuse-plan" checked> 复用已生成意图</label>
         </div>
 
-        <div id="progress-strip" class="progress-strip"><span class="ps-empty">演示页：仅展示界面，不执行真实流水线。</span></div>
-        <div id="write-out" class="out statusbar" data-out-base="statusbar">就绪 · 这是静态演示</div>
+        <div id="progress-strip" class="progress-strip"><span class="ps-empty">打开或读取一章后，这里显示流水线卡在哪一步。</span></div>
+        <div id="write-out" class="out statusbar" data-out-base="statusbar">就绪 · 选择章号后点「读取」或 ①→⑥ 查看样本产物</div>
       </div>
 
-      <!-- ===== 夜间批量流水线（演示） ===== -->
+      <!-- ===== 夜间批量流水线 ===== -->
       <div class="card batch-card">
         <div class="batch-head">
           <span class="batch-title">🌙 夜间批量流水线</span>
           <span class="batch-sub">挂机自动连写多章：逐章 意图→写作→审计→(修订)→抽取→摘要；失败章不中断队列、可断点续跑</span>
-          <span id="batch-status" class="batch-status">演示 · 3/5 章完成</span>
+          <span id="batch-status" class="batch-status"></span>
         </div>
         <div class="batch-controls">
-          <label class="b-field"><span>起始章</span><div class="b-unit"><input id="b-start" type="number" min="1" value="2" autocomplete="off" inputmode="numeric"></div></label>
+          <label class="b-field"><span>起始章</span><div class="b-unit"><input id="b-start" type="number" min="1" value="1" autocomplete="off" inputmode="numeric"></div></label>
           <label class="b-field"><span>连写</span><div class="b-unit"><input id="b-count" type="number" min="1" max="99" value="5" autocomplete="off" inputmode="numeric"><i>章</i></div></label>
           <label class="tb-check" title="勾选后每章跑完直接写进正文章节文件，无需人工点采纳"><input type="checkbox" id="b-accept" checked> 自动采纳</label>
           <label class="b-field"><span>单章超时</span><div class="b-unit"><input id="b-timeout" type="number" min="5" value="30" autocomplete="off" inputmode="numeric"><i>分</i></div></label>
           <button class="btn primary" id="b-start-btn">▶ 开始批量</button>
           <button class="btn ghost" id="b-stop-btn">⏹ 停止</button>
         </div>
-        <div class="batch-progress"><div id="b-bar" class="b-bar" style="width:60%"></div></div>
+        <div class="batch-progress"><div id="b-bar" class="b-bar" style="width:0%"></div></div>
         <div id="b-results" class="batch-results">
-          <div class="hint" style="font-size:12.5px">
-            ✅ 第002章 完成（意图→写作→审计→摘要）1.2min · ¥0.0031<br>
-            ✅ 第003章 完成（意图→写作→审计→摘要）1.4min · ¥0.0034<br>
-            ✅ 第004章 完成（意图→写作→审计→摘要）1.1min · ¥0.0029<br>
-            ⏳ 第005章 写作中…（已用时 0.6min）<br>
-            ⏸ 第006章 等待中
-          </div>
+          <div class="hint" style="font-size:12.5px">演示：本地运行时，这里会实时显示每章完成状态、耗时与费用。</div>
         </div>
       </div>
 
@@ -163,60 +151,26 @@
         <div class="card editor">
           <div class="chapter-title-row">
             <label for="chapter-title">本章标题</label>
-            <input id="chapter-title" class="chapter-title-input" value="第001章 弹幕视觉觉醒" />
-            <button class="btn ghost mini" id="gen-title">⟳ 起名</button>
+            <input id="chapter-title" class="chapter-title-input" placeholder="写完正文后自动起名，也可手动改" />
+            <button class="btn ghost mini" id="gen-title" title="根据当前正文重新生成标题">⟳ 起名</button>
           </div>
           <div class="tabs-mini">
             <button class="tmini active" data-pane="plan">写作意图</button>
-            <button class="tmini" data-pane="draft">正文 <span class="cnt" id="draft-cnt">2186</span></button>
+            <button class="tmini" data-pane="draft">正文 <span class="cnt" id="draft-cnt">0</span></button>
             <button class="tmini" data-pane="audit">审计报告</button>
             <button class="tmini" data-pane="revise">改写报告</button>
+            <button class="tmini" data-pane="flow">流程结果</button>
             <button class="tmini" data-pane="extract">已抽事实</button>
             <button class="tmini" data-pane="summary">摘要</button>
             <button class="btn ghost mini draft-save" id="save-draft">💾 保存草稿</button>
           </div>
-          <textarea id="pane-plan" class="pane active" rows="16">【本章意图】
-- 林满月首次觉醒"弹幕视觉"，在恋综《心动倒计时》录制现场看见全网观众的心动值与吐槽弹幕。
-- 钩子：她发现节目导演正在按剧本安排"假心动"，而弹幕显示观众早已识破。
-- 人物弧光：林满月从被动背锅，到第一次用弹幕预判化解直播事故。</textarea>
-          <textarea id="pane-draft" class="pane" rows="30">林满月盯着监视器，脑子里的弹幕像瀑布一样刷过。
-
-「这男的好油」「导演组是不是当我们瞎」「满月姐快跑这节目要完」
-
-她使劲眨了眨眼。弹幕还在。
-
-不是幻觉。那些半透明的文字悬浮在画面之上，清清楚楚标着观众的实时反应——「心动值 +12」「吐槽 +99」「弃剧预警」。
-
-这是她入职《心动倒计时》的第三天。作为实习编剧，她的工作是在导演喊卡后把嘉宾的尴尬圆回来。但此刻她忽然意识到，自己能看到别人看不到的东西。
-
-「满月，愣着干什么！B 机位切特写！」耳机里传来导演的吼声。
-
-林满月下意识看了一眼弹幕流：「观众正在骂男一油腻」。
-
-她抓起对讲机，压着嗓子说：「导演，男一刚抬手抹了把嘴，切近景观众会炸。建议切女二的反应镜头。」
-
-三秒沉默。耳机里传来导演狐疑的声音：「……听她的。」
-
-画面切过去。弹幕瞬间反转：
-
-「哈哈哈哈女二这白眼绝了」「编剧加鸡腿」「这节目还能救」</textarea>
-          <div id="pane-audit" class="pane demo-static">【审计报告 · 示例】
-- ✅ 人物行为符合设定（林满月：谨慎、反应快）
-- ✅ 钩子：章末弹幕反转制造追读欲望
-- ✅ 字数：2186 / 目标 2200
-- ⚠️ 建议：第 2 段"弹幕像瀑布"与后文"半透明文字"意象重复，可删其一</div>
-          <div id="pane-revise" class="pane demo-static">【改写报告 · 示例】
-- 改写点：将"弹幕像瀑布"改为"弹幕像雨刮器下的水痕"（意象更利落）
-- 耗时：3.2s · 模型：doubao-seed-2-0-lite-260428 · 费用：¥0.0000</div>
-          <div id="pane-extract" class="pane demo-static">【已抽事实 · 示例】
-{
-  "人物": ["林满月（实习编剧，觉醒弹幕视觉）", "导演（男，急性子）"],
-  "地点": ["《心动倒计时》录制现场"],
-  "道具": ["对讲机", "监视器"],
-  "能力": ["弹幕视觉：能看见观众实时心动值与吐槽"]
-}</div>
-          <div id="pane-summary" class="pane demo-static">【摘要 · 示例】
-林满月觉醒弹幕视觉，首次在录制现场用预判化解直播事故，获得导演初步信任。</div>
+          <textarea id="pane-plan" class="pane active" rows="16" placeholder="点「① 生成意图」&#10;这里生成本章的情节意图、人物弧光、钩子设计，供写手参照。"></textarea>
+          <textarea id="pane-draft" class="pane" rows="30" placeholder="点「② 写章」，支持流式输出；也可直接在正文里手改。"></textarea>
+          <div id="pane-audit" class="pane"></div>
+          <div id="pane-revise" class="pane"></div>
+          <div id="pane-flow" class="pane"></div>
+          <div id="pane-extract" class="pane"></div>
+          <div id="pane-summary" class="pane"></div>
         </div>
 
         <div class="card side">
@@ -226,24 +180,10 @@
             <button class="tmini" data-side="cost">成本</button>
             <button class="tmini" data-side="chapters">章节</button>
           </div>
-          <div id="side-state" class="spane active md"><h3 class="mdh">世界状态</h3><ul class="mdl">
-            <li>林满月：实习编剧，负债 47 万，已觉醒弹幕视觉</li>
-            <li>陆淮舟：顶流毒舌男星，尚未登场</li>
-            <li>《心动倒计时》：S+ 级恋综，收视率 0.87（危险）</li>
-          </ul></div>
-          <div id="side-hooks" class="spane demo-static">【伏笔池 · 示例】
-- 🔴 弹幕视觉的来源（长线）
-- 🟡 导演组内部有人在向竞品泄漏台本（中线）
-- 🟢 林满月的"预判"被剪辑师注意（短线）</div>
-          <div id="side-cost" class="spane demo-static">【成本 · 示例】
-本会话：¥0.0082
-- 意图：¥0.0012（Qwen3.5-27B）
-- 正文：¥0.0040（doubao-seed-2-0-lite）
-- 审计：¥0.0030（Qwen3.5-35B-A3B）</div>
-          <div id="side-chapters" class="spane demo-static">【章节 · 示例】
-- 第001章 弹幕视觉觉醒 ✅ 已采纳
-- 第002章 导演的赌约 ✅ 已采纳
-- 第003章 第一次直播事故 🔄 写作中</div>
+          <div id="side-state" class="spane active md"></div>
+          <div id="side-hooks" class="spane"></div>
+          <div id="side-cost" class="spane"></div>
+          <div id="side-chapters" class="spane"></div>
         </div>
       </div>
     </section>
@@ -257,45 +197,45 @@
         </div>
       </div>
       <div class="demo-note">
-        演示页展示两个示例项目。本地运行时，这里可新建项目、挂载外部章节目录、编辑设定与卷纲、查看快照与回滚。
+        演示页展示样本项目。本地运行时，可新建项目、挂载外部章节目录、编辑设定与卷纲、查看快照与回滚、一键导出全部章节。
       </div>
       <div class="cols">
         <div class="card">
           <h2>我的书</h2>
-          <div id="book-list">
-            <div class="book-item" style="padding:10px 0;border-bottom:1px solid var(--line)">
-              <b>恋综编剧她只想搞钱</b>
-              <div class="hint">都市言情 / 娱乐圈 · 24 章 · 上次更新 2026-10-31</div>
-            </div>
-            <div class="book-item" style="padding:10px 0;border-bottom:1px solid var(--line)">
-              <b>我专收死局全城等我翻盘</b>
-              <div class="hint">现代都市 / 高智商商战 · 1 章 · 上次更新 2026-10-25</div>
-            </div>
-          </div>
+          <div id="book-list"></div>
+
           <div class="ai-inspire">
-            <div class="ai-inspire-head"><span class="spark">✦</span> 没有灵感？让 AI 一键推荐题材</div>
-            <p class="hint">填一个方向（可选），AI 会直接生成书名、题材、核心设定、文风、禁忌和分卷大纲。</p>
-            <div class="row">
-              <input id="nb-hint" placeholder="如：想写轻松搞笑的东汉穿越争霸">
-              <button class="btn primary" id="inspire-btn">✦ 推荐题材</button>
+            <div class="ai-inspire-head">
+              <span class="spark">✦</span> 没有灵感？让 AI 一键推荐题材
             </div>
-            <div id="inspire-out" class="out demo-static">【示例输出】
-书名：《我在三国说相声》
-题材：架空穿越 / 历史 / 搞笑
-核心设定：现代相声演员魂穿东汉，靠"捧逗"技能在乱世收服名将。
-文风：轻松诙谐、高密度梗、章末留包袱。
-禁忌：不写悲剧结局；不抹黑历史人物。
-分卷大纲：（略）</div>
+            <p class="hint">填一个方向（可选），AI 会直接生成书名、题材、核心设定、文风、禁忌和分卷大纲，填进下面的表单，你微调后即可创建项目。</p>
+            <div class="row">
+              <input id="nb-hint" placeholder="你的偏好或方向（可选），如：想写轻松搞笑的东汉穿越争霸">
+              <button class="btn primary" id="inspire-btn">✦ 推荐题材</button>
+              <button class="btn ghost" id="inspire-again" style="display:none">换一个</button>
+            </div>
+            <div id="inspire-out" class="out"></div>
           </div>
+
+          <h2 class="mt">新建 / 挂载项目</h2>
+          <div class="form">
+            <label>书名<input id="nb-title" placeholder="例如：三国名将，都被我段子忽悠瘸了"></label>
+            <div class="grid2">
+              <label>题材<input id="nb-genre" placeholder="架空穿越 / 玄幻 / 都市"></label>
+              <label>单章字数<input id="nb-words" type="number" value="2000" autocomplete="off" inputmode="numeric"></label>
+            </div>
+            <label>章节目录（可选，绝对路径）<input id="nb-dir" placeholder="留空 = 默认目录；也可填现有文件夹如 搞笑三国/chapters"></label>
+            <label>核心设定<textarea id="nb-premise" rows="3"></textarea></label>
+            <label>文风要求<textarea id="nb-style" rows="2"></textarea></label>
+            <label>硬性禁忌<textarea id="nb-taboo" rows="2"></textarea></label>
+            <label>卷纲 / 大纲<textarea id="nb-outline" rows="4"></textarea></label>
+          </div>
+          <div class="row"><button class="btn primary" id="create-book">创建项目</button></div>
         </div>
-        <div class="card">
+
+        <div class="card" id="book-detail">
           <h2>项目详情</h2>
-          <div id="detail-body">
-            <div class="hint" style="margin-bottom:8px">恋综编剧她只想搞钱</div>
-            <div class="md"><h3 class="mdh">核心设定</h3><div class="mdp">林满月是濒临失业的恋综小编剧，意外觉醒"弹幕视觉"，能实时看见观众的心动值和吐槽弹幕。她靠预判弹幕改写剧本，把无人看好的糊综做成爆款。</div>
-            <h3 class="mdh">文风要求</h3><div class="mdp">轻快爽利、高密度对话、章节末留钩子；第三人称女主视角为主。</div>
-            <h3 class="mdh">硬性禁忌</h3><div class="mdp">不写重生老套金手指；不涉及政治法律；不写真实明星影射；不写低俗擦边。</div></div>
-          </div>
+          <div id="detail-body" class="hint">左侧选择一个项目查看详情。</div>
         </div>
       </div>
     </section>
@@ -451,7 +391,7 @@
             <select id="preset-sel"><option>DeepSeek（示例预设）</option><option>火山豆包</option><option>魔搭社区</option></select>
             <button class="btn" id="add-provider">+ 新增服务商</button>
           </div>
-          <div id="test-out" class="out demo-static">演示：一键测试会在这里输出「✅ 测试完成：可用 N / 不可用 M」</div>
+          <div id="test-out" class="out"></div>
         </div>
 
         <div class="card">
@@ -513,7 +453,7 @@
             </table>
           </div>
           <div class="row"><button class="btn primary" id="save-config">保存配置</button></div>
-          <div id="save-out" class="out demo-static">演示页不保存配置，本地运行时保存到 config.local.json</div>
+          <div id="save-out" class="out"></div>
         </div>
       </div>
     </section>
@@ -523,51 +463,7 @@
 
 <div class="demo-ribbon">寒峰小说工作台 · 静态演示</div>
 
-<script>
-/* ============ 纯静态演示交互：仅切换视图与页签 ============ */
-'use strict';
-const $ = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
-
-// 侧边导航切换
-$$('.navitem').forEach(btn => {
-  btn.addEventListener('click', () => {
-    $$('.navitem').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const v = btn.dataset.view;
-    $$('.view').forEach(s => s.classList.remove('active'));
-    $('#view-' + v).classList.add('active');
-  });
-});
-
-// 编辑器内页签切换
-$$('.tabs-mini').forEach(tabbar => {
-  const btns = tabbar.querySelectorAll('button[data-pane], button[data-side]');
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const key = btn.dataset.pane || btn.dataset.side;
-      const wrap = tabbar.closest('.card');
-      if (!wrap) return;
-      // 主编辑器
-      wrap.querySelectorAll('textarea.pane, div.pane').forEach(p => p.classList.remove('active'));
-      const target = wrap.querySelector('#' + (btn.dataset.pane ? 'pane-' + key : 'side-' + key));
-      if (target) target.classList.add('active');
-    });
-  });
-});
-
-// 顶部几个按钮：只提示，不执行
-['#w-load','#w-plan','#w-write','#w-audit','#w-revise','#w-extract','#w-summary','#w-accept','#gen-title','#save-draft','#inspire-btn','#b-start-btn','#b-stop-btn','#test-all-btn','#save-config','#add-provider']
-  .forEach(sel => {
-    const el = $(sel);
-    if (el) el.addEventListener('click', e => {
-      e.preventDefault();
-      const out = $('#write-out') || $('#inspire-out');
-      if (out) out.textContent = '🔒 在线演示模式：此功能需本地运行（python server.py）后才可使用。';
-    });
-  });
-</script>
+<script src="demo-data.js"></script>
+<script src="demo.js"></script>
 </body>
 </html>
