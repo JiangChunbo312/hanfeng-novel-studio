@@ -132,6 +132,33 @@
         <div id="write-out" class="out statusbar" data-out-base="statusbar">就绪 · 这是静态演示</div>
       </div>
 
+      <!-- ===== 夜间批量流水线（演示） ===== -->
+      <div class="card batch-card">
+        <div class="batch-head">
+          <span class="batch-title">🌙 夜间批量流水线</span>
+          <span class="batch-sub">挂机自动连写多章：逐章 意图→写作→审计→(修订)→抽取→摘要；失败章不中断队列、可断点续跑</span>
+          <span id="batch-status" class="batch-status">演示 · 3/5 章完成</span>
+        </div>
+        <div class="batch-controls">
+          <label class="b-field"><span>起始章</span><div class="b-unit"><input id="b-start" type="number" min="1" value="2" autocomplete="off" inputmode="numeric"></div></label>
+          <label class="b-field"><span>连写</span><div class="b-unit"><input id="b-count" type="number" min="1" max="99" value="5" autocomplete="off" inputmode="numeric"><i>章</i></div></label>
+          <label class="tb-check" title="勾选后每章跑完直接写进正文章节文件，无需人工点采纳"><input type="checkbox" id="b-accept" checked> 自动采纳</label>
+          <label class="b-field"><span>单章超时</span><div class="b-unit"><input id="b-timeout" type="number" min="5" value="30" autocomplete="off" inputmode="numeric"><i>分</i></div></label>
+          <button class="btn primary" id="b-start-btn">▶ 开始批量</button>
+          <button class="btn ghost" id="b-stop-btn">⏹ 停止</button>
+        </div>
+        <div class="batch-progress"><div id="b-bar" class="b-bar" style="width:60%"></div></div>
+        <div id="b-results" class="batch-results">
+          <div class="hint" style="font-size:12.5px">
+            ✅ 第002章 完成（意图→写作→审计→摘要）1.2min · ¥0.0031<br>
+            ✅ 第003章 完成（意图→写作→审计→摘要）1.4min · ¥0.0034<br>
+            ✅ 第004章 完成（意图→写作→审计→摘要）1.1min · ¥0.0029<br>
+            ⏳ 第005章 写作中…（已用时 0.6min）<br>
+            ⏸ 第006章 等待中
+          </div>
+        </div>
+      </div>
+
       <div class="write-grid">
         <div class="card editor">
           <div class="chapter-title-row">
@@ -390,7 +417,7 @@ $$('.tabs-mini').forEach(tabbar => {
 });
 
 // 顶部几个按钮：只提示，不执行
-['#w-load','#w-plan','#w-write','#w-audit','#w-revise','#w-extract','#w-summary','#w-accept','#gen-title','#save-draft','#inspire-btn']
+['#w-load','#w-plan','#w-write','#w-audit','#w-revise','#w-extract','#w-summary','#w-accept','#gen-title','#save-draft','#inspire-btn','#b-start-btn','#b-stop-btn']
   .forEach(sel => {
     const el = $(sel);
     if (el) el.addEventListener('click', e => {
