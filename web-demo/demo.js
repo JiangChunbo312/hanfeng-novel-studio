@@ -125,6 +125,69 @@ function renderWriteMeta() {
   const cnt = $('#draft-cnt'); if (cnt) cnt.textContent = wc;
 }
 
+/* 审计报告渲染（复刻原版：JSON → 评分/问题卡片） */
+function renderAudit(auditTxt) {
+  const box = $('#pane-audit');
+  if (!auditTxt) { box.innerHTML = '<div class="empty">还没有审计报告。点「③ 审计」。</div>'; return; }
+  let r;
+  try { r = JSON.parse(auditTxt); } catch (e) { box.innerHTML = '<pre>' + esc(auditTxt) + '</pre>'; return; }
+  const issues = r.issues || [];
+  box.innerHTML = `
+    <div class="kv"><span>评分</span><span class="mono"><b>${r.score}</b> / 100 ${r.passed ? '<span class="tag ok">通过</span>' : '<span class="tag bad">有 ' + (r.critical_count || 0) + ' 个致命问题</span>'}</span></div>
+    <div class="hint">${esc(r.summary || '')}</div>
+    ${issues.length ? issues.map(i => `<div class="issue ${esc(i.level)}">
+      <span class="badge ${esc(i.level)}">${esc((i.id || '') + ' ' + (i.level || ''))}</span>${esc(i.desc || '')}
+      ${i.evidence ? `<div class="mono" style="color:var(--ink3);margin-top:4px">依据：${esc(i.evidence)}</div>` : ''}
+      ${i.fix ? `<div style="margin-top:4px">改法：${esc(i.fix)}</div>` : ''}
+    </div>`).join('') : '<div class="empty">没有发现问题。</div>'}`;
+}
+
+/* 改写报告渲染（复刻原版：JSON 数组 → 每条问题处理状态） */
+function renderRevise(reviseTxt) {
+  const box = $('#pane-revise');
+  if (!box) return;
+  if (!reviseTxt) {
+    box.innerHTML = '<div class="empty">还没有改写报告。点「④ 改写」后，这里会列出每条审计问题是怎么改的。</div>';
+    return;
+  }
+  let r;
+  try { r = JSON.parse(reviseTxt); } catch (e) { box.innerHTML = '<pre>' + esc(reviseTxt) + '</pre>'; return; }
+  // 新格式：对象带 rounds_detail
+  if (r && typeof r === 'object' && Array.isArray(r.rounds_detail)) {
+    const detail = r.rounds_detail;
+    const totalIssues = detail.reduce((a, x) => a + (x.issues || []).length, 0);
+    const totalDone = detail.reduce((a, x) => a + (x.issues || []).filter(i => i.handled).length, 0);
+    if (!detail.length) {
+      box.innerHTML = `<div class="empty">${esc(r.note || '没有进行改写。')}</div>`;
+      return;
+    }
+    box.innerHTML = `
+      <div class="kv"><span>改写结果</span><span class="mono"><b>共 ${detail.length} 轮</b> · 累计处理 <b>${totalDone}</b> / ${totalIssues} 条 ${r.note ? '<span class="tag ok">' + esc(r.note) + '</span>' : ''}</span></div>
+      ${detail.map((rd, idx) => `
+        <div class="round-block">
+          <div class="round-head">第 ${esc(rd.round)} 轮</div>
+          ${rd.outcome ? `<div class="hint">${esc(rd.outcome)}</div>` : ''}
+          ${(rd.issues || []).map(x => `<div class="issue ${esc(x.level || '')}">
+            <span class="badge ${x.handled ? 'ok' : 'bad'}">${x.handled ? '✓' : '✗'} ${esc(x.issue_id || '')} ${esc(x.level || '')}</span>${esc(x.desc || '')}
+            ${x.evidence ? `<div class="mono" style="color:var(--ink3);margin-top:4px">依据：${esc(x.evidence)}</div>` : ''}
+            <div style="margin-top:4px;color:${x.handled ? 'var(--ok)' : 'var(--bad)'}">${x.handled ? '✅ 已改' : '❌ 未改'}：${esc(x.how || '')}</div>
+          </div>`).join('')}
+        </div>`).join('')}`;
+    return;
+  }
+  // 旧格式：数组 / {report:[...]}
+  const rows = Array.isArray(r) ? r : (r.report || []);
+  if (!rows.length) { box.innerHTML = `<div class="empty">${esc((r && r.note) || '改写报告为空。')}</div>`; return; }
+  const done = rows.filter(x => x.handled).length;
+  box.innerHTML = `
+    <div class="kv"><span>改写结果</span><span class="mono"><b>${done}</b> / ${rows.length} 条已处理 ${done === rows.length ? '<span class="tag ok">全部处理</span>' : '<span class="tag bad">还有 ' + (rows.length - done) + ' 条未处理</span>'}</span></div>
+    ${rows.map(x => `<div class="issue ${esc(x.level || '')}">
+      <span class="badge ${x.handled ? 'ok' : 'bad'}">${x.handled ? '✓' : '✗'} ${esc(x.issue_id || '')} ${esc(x.level || '')}</span>${esc(x.desc || '')}
+      ${x.evidence ? `<div class="mono" style="color:var(--ink3);margin-top:4px">依据：${esc(x.evidence)}</div>` : ''}
+      <div style="margin-top:4px;color:${x.handled ? 'var(--ok)' : 'var(--bad)'}">${x.handled ? '✅ 已改' : '❌ 未改'}：${esc(x.how || '')}</div>
+    </div>`).join('')}`;
+}
+
 function loadChapter(n) {
   currentChapter = n;
   const ch = chapterByIdx(n);
@@ -138,8 +201,8 @@ function loadChapter(n) {
   const summary = SUMMARIES['ch' + String(n).padStart(3, '0')] || SUMMARIES[Object.keys(SUMMARIES)[0]] || '';
   $('#pane-plan').value = plan;
   $('#pane-draft').value = draft;
-  $('#pane-audit').innerHTML = audit ? '<div class="md">' + md(audit) + '</div>' : '<div class="empty">暂无审计报告。</div>';
-  $('#pane-revise').innerHTML = revise ? '<div class="md">' + md(revise) + '</div>' : '<div class="empty">暂无改写报告。</div>';
+  renderAudit(audit);
+  renderRevise(revise);
   $('#pane-flow').innerHTML = `<div class="md"><h3 class="mdh">流程结果（示例）</h3><div class="mdp">第 ${n} 章完整流水线已跑通：意图 → 写作 → 审计(通过) → 抽取 → 摘要 → 已采纳。</div></div>`;
   $('#pane-extract').innerHTML = extractHtml(extract);
   $('#pane-summary').innerHTML = summary ? '<div class="md">' + md(summary) + '</div>' : '<div class="empty">暂无摘要。</div>';
