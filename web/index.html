@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寒峰小说工作台</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <!-- ============ 侧边导航 ============ -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-mark">小</span>
+      <div class="logo-text">寒峰小说工作台<small>v0.2</small></div>
+    </div>
+    <nav class="nav">
+      <button class="navitem active" data-view="write">
+        <span class="nav-ic">✎</span>写作台
+      </button>
+      <button class="navitem" data-view="books">
+        <span class="nav-ic">▤</span>项目
+      </button>
+      <button class="navitem" data-view="config">
+        <span class="nav-ic">⚙</span>模型配置
+      </button>
+    </nav>
+    <div class="side-foot">
+      <span class="dot"></span>本地运行 · 数据不出本机
+    </div>
+  </aside>
+
+  <!-- ============ 主区域 ============ -->
+  <main class="main">
+
+    <!-- ===== 写作台（默认主视图） ===== -->
+    <section class="view active" id="view-write">
+      <div class="page-head">
+        <div>
+          <h1>写作台</h1>
+          <p class="sub" id="wh-meta">选择项目与章号，开始 AI 辅助创作</p>
+        </div>
+        <div class="head-tags" id="wh-tags"></div>
+      </div>
+
+      <div class="write-sticky">
+        <div class="toolbar">
+          <div class="tb-group">
+            <label class="tb-field">项目
+              <select id="w-book"></select>
+            </label>
+            <label class="tb-field w70">章号
+              <input id="w-chapter" type="number" min="1" value="1" autocomplete="off" inputmode="numeric">
+            </label>
+            <button class="btn ghost" id="w-load">读取</button>
+          </div>
+          <span class="tb-sep"></span>
+          <div class="tb-group steps">
+            <button class="step" id="w-plan"><i>1</i>生成意图</button>
+            <button class="step primary" id="w-write"><i>2</i>写章</button>
+            <button class="step" id="w-audit"><i>3</i>审计</button>
+            <button class="step" id="w-revise"><i>4</i>改写</button>
+            <button class="step" id="w-extract"><i>5</i>抽事实</button>
+            <button class="step" id="w-summary"><i>6</i>摘要</button>
+            <button class="step ok" id="w-accept"><i>7</i>采纳</button>
+          </div>
+          <label class="tb-check"><input type="checkbox" id="w-autorun"> 一键跑完</label>
+          <label class="tb-check"><input type="checkbox" id="w-reuse-plan" checked> 复用已生成意图</label>
+        </div>
+
+        <div id="progress-strip" class="progress-strip"><span class="ps-empty">打开或读取一章后，这里显示流水线卡在哪一步。</span></div>
+
+        <div id="write-out" class="out statusbar" data-out-base="statusbar"></div>
+      </div>
+
+      <div class="card batch-card">
+        <div class="batch-head">
+          <span class="batch-title">🌙 夜间批量流水线</span>
+          <span class="batch-sub">挂机自动连写多章：逐章 意图→写作→审计→(修订)→抽取→摘要；失败章不中断队列、可断点续跑</span>
+          <span id="batch-status" class="batch-status"></span>
+        </div>
+        <div class="batch-controls">
+          <label class="b-field"><span>起始章</span><div class="b-unit"><input id="b-start" type="number" min="1" value="1" autocomplete="off" inputmode="numeric"></div></label>
+          <label class="b-field"><span>连写</span><div class="b-unit"><input id="b-count" type="number" min="1" max="99" value="5" autocomplete="off" inputmode="numeric"><i>章</i></div></label>
+          <label class="tb-check" title="勾选后每章跑完直接写进正文章节文件，无需人工点采纳"><input type="checkbox" id="b-accept" checked> 自动采纳</label>
+          <label class="b-field"><span>单章超时</span><div class="b-unit"><input id="b-timeout" type="number" min="5" value="30" autocomplete="off" inputmode="numeric"><i>分</i></div></label>
+          <button class="btn primary" id="b-start-btn">▶ 开始批量</button>
+          <button class="btn ghost" id="b-stop-btn" disabled>⏹ 停止</button>
+        </div>
+        <div class="batch-progress"><div id="b-bar" class="b-bar"></div></div>
+        <div id="b-results" class="batch-results"></div>
+      </div>
+
+      <div class="write-grid">
+        <div class="card editor">
+          <div class="chapter-title-row">
+            <label for="chapter-title">本章标题</label>
+            <input id="chapter-title" class="chapter-title-input" placeholder="写完正文后自动起名，也可手动改" />
+            <button class="btn ghost mini" id="gen-title" title="根据当前正文重新生成标题">⟳ 起名</button>
+          </div>
+          <div class="tabs-mini">
+            <button class="tmini active" data-pane="plan">写作意图</button>
+            <button class="tmini" data-pane="draft">正文 <span class="cnt" id="draft-cnt">0</span></button>
+            <button class="tmini" data-pane="audit">审计报告</button>
+            <button class="tmini" data-pane="revise">改写报告</button>
+            <button class="tmini" data-pane="flow">流程结果</button>
+            <button class="tmini" data-pane="extract">已抽事实</button>
+            <button class="tmini" data-pane="summary">摘要</button>
+            <button class="btn ghost mini draft-save" id="save-draft" title="把正文框里手动改动的内容保存为草稿">💾 保存草稿</button>
+          </div>
+          <textarea id="pane-plan" class="pane active" rows="16" placeholder="点「① 生成意图」&#10;这里生成本章的情节意图、人物弧光、钩子设计，供写手参照。"></textarea>
+          <textarea id="pane-draft" class="pane" rows="30" placeholder="点「② 写章」，支持流式输出；也可直接在正文里手改。"></textarea>
+          <div id="pane-audit" class="pane"></div>
+          <div id="pane-revise" class="pane"></div>
+          <div id="pane-flow" class="pane"></div>
+          <div id="pane-extract" class="pane"></div>
+          <div id="pane-summary" class="pane"></div>
+        </div>
+
+        <div class="card side">
+          <div class="tabs-mini">
+            <button class="tmini active" data-side="state">世界状态</button>
+            <button class="tmini" data-side="hooks">伏笔池</button>
+            <button class="tmini" data-side="cost">成本</button>
+            <button class="tmini" data-side="chapters">章节</button>
+          </div>
+          <div id="side-state" class="spane active md"></div>
+          <div id="side-hooks" class="spane"></div>
+          <div id="side-cost" class="spane"></div>
+          <div id="side-chapters" class="spane"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 项目 ===== -->
+    <section class="view" id="view-books">
+      <div class="page-head">
+        <div>
+          <h1>项目</h1>
+          <p class="sub">新建或挂载一本书；章节目录可直接指向你已有的文件夹，不迁移数据。</p>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="card">
+          <h2>我的书</h2>
+          <div id="book-list"></div>
+
+          <div class="ai-inspire">
+            <div class="ai-inspire-head">
+              <span class="spark">✦</span> 没有灵感？让 AI 一键推荐题材
+            </div>
+            <p class="hint">填一个方向（可选），AI 会直接生成书名、题材、核心设定、文风、禁忌和分卷大纲，填进下面的表单，你微调后即可创建项目。</p>
+            <div class="row">
+              <input id="nb-hint" placeholder="你的偏好或方向（可选），如：想写轻松搞笑的东汉穿越争霸">
+              <button class="btn primary" id="inspire-btn">✦ 推荐题材</button>
+              <button class="btn ghost" id="inspire-again" style="display:none">换一个</button>
+            </div>
+            <div id="inspire-out" class="out"></div>
+          </div>
+
+          <h2 class="mt">新建 / 挂载项目</h2>
+          <div class="form">
+            <label>书名<input id="nb-title" placeholder="例如：三国名将，都被我段子忽悠瘸了"></label>
+            <div class="grid2">
+              <label>题材<input id="nb-genre" placeholder="架空穿越 / 玄幻 / 都市"></label>
+              <label>单章字数<input id="nb-words" type="number" value="2000" autocomplete="off" inputmode="numeric"></label>
+            </div>
+            <label>章节目录（可选，绝对路径）<input id="nb-dir" placeholder="留空 = 默认目录；也可填现有文件夹如 搞笑三国/chapters"></label>
+            <label>核心设定<textarea id="nb-premise" rows="3"></textarea></label>
+            <label>文风要求<textarea id="nb-style" rows="2"></textarea></label>
+            <label>硬性禁忌<textarea id="nb-taboo" rows="2"></textarea></label>
+            <label>卷纲 / 大纲<textarea id="nb-outline" rows="4"></textarea></label>
+          </div>
+          <div class="row"><button class="btn primary" id="create-book">创建项目</button></div>
+        </div>
+
+        <div class="card" id="book-detail">
+          <h2>项目详情</h2>
+          <div id="detail-body" class="hint">左侧选择一个项目查看详情。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 模型配置（最后） ===== -->
+    <section class="view" id="view-config">
+      <div class="page-head">
+        <div>
+          <h1>模型配置</h1>
+          <p class="sub">只认 OpenAI 兼容协议。填 Base URL + Key + 模型名即可接入；按角色路由不同模型以控制成本。</p>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="card">
+          <h2>服务商连接</h2>
+          <p class="hint">支持 DeepSeek / Kimi / 智谱 / 通义 / 火山豆包 / OpenRouter / 本地 Ollama · LM Studio。</p>
+          <div class="row" style="margin-bottom:12px">
+            <button class="btn primary" id="test-all-btn">🔍 一键测试全部模型</button>
+            <span class="hint" style="align-self:center;max-width:62%">逐个发一条极短请求，测连通与额度；结果分「可用 / 不可用」，不可用的可一键删除，故障转移就不再轮换到它。</span>
+          </div>
+          <div id="test-all-result"></div>
+          <div id="providers"></div>
+          <div class="row">
+            <select id="preset-sel"></select>
+            <button class="btn" id="add-provider">+ 新增服务商</button>
+          </div>
+          <div id="test-out" class="out"></div>
+        </div>
+
+        <div class="card">
+          <h2>角色 → 模型 路由</h2>
+          <p class="hint">省钱的要害：写手用强模型，审计 / 摘要 / 事实抽取用便宜的快模型。留空则回落 default。
+            每个角色可配<b>模型链</b>（英文逗号分隔，前面的优先）——某模型超时无响应或报错，自动切换下一个，保证流水线不断。</p>
+          <div id="routes"></div>
+          <div class="row" style="margin-top:10px">
+            <label class="fld w120" style="max-width:200px">单步超时（秒）
+              <input id="step-timeout" type="number" min="10" value="180" autocomplete="off" inputmode="numeric">
+            </label>
+            <span class="hint" style="align-self:flex-end;padding-bottom:6px">模型 N 秒内无响应即判超时，切下一个候选（0=不超时）</span>
+          </div>
+          <h2 class="mt">单价表（元 / 百万 token）</h2>
+          <p class="hint">只用于成本估算，按所用服务商官网价格填。免费模型（如已接入的火山豆包）留 0 即可，成本面板会显示「免费」。</p>
+          <div id="prices"></div>
+          <div class="row"><button class="btn primary" id="save-config">保存配置</button></div>
+          <div id="save-out" class="out"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

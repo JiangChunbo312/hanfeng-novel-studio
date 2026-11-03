@@ -1,0 +1,32 @@
+{
+  "providers": [
+    {
+      "id": "demo",
+      "label": "示例 · DeepSeek",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "",
+      "model": "deepseek-chat",
+      "timeout": 180
+    }
+  ],
+  "routes": {
+    "default": "demo:deepseek-chat",
+    "planner": "",
+    "composer": "",
+    "writer": "",
+    "observer": "",
+    "auditor": "",
+    "reviser": "",
+    "summary": ""
+  },
+  "prices": {
+    "demo:deepseek-chat": { "in": 2.0, "out": 8.0 }
+  },
+  "defaults": {
+    "chapter_words": 2000,
+    "temperature_writer": 0.85,
+    "temperature_audit": 0.25,
+    "recent_summary_count": 5,
+    "max_auto_revise": 1
+  }
+}

@@ -1,0 +1,19 @@
+# API Key 与本机配置，绝不进 Git
+config.local.json
+
+# 运行时数据（不提交）
+__pycache__/
+*.pyc
+*.log
+server_run.log
+server.log
+server.err.log
+_shushu_*
+
+# 项目里的运行时垃圾（示例项目保留 book.json/chapters/drafts/summaries 等核心文件）
+**/snapshots/
+**/usage.jsonl
+**/*.bak*
+**/*.manual-fixed*
+**/drafts/.bak-*/
+**/drafts/_archive/

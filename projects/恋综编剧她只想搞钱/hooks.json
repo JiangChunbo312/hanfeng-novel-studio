@@ -1,0 +1,892 @@
+{
+  "hooks": [
+    {
+      "id": "H001",
+      "text": "周明两次偷拍林满月屏幕及轨道/热度条，目的和用途未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H002",
+      "text": "林满月为何能看见半透明弹幕与心动值标签，来源与限制未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 23
+    },
+    {
+      "id": "H003",
+      "text": "陆淮舟心动值显示为0（异常），异常原因未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 23
+    },
+    {
+      "id": "H004",
+      "text": "置顶弹幕称陆淮舟会签且条件为林满月配合炒CP，来源与是否成真未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H005",
+      "text": "林满月预约住院费截止本月25日，住院对象及未缴费后果未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H006",
+      "text": "王姐称知道林满月家有存款，其信息来源未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H007",
+      "text": "周明上午把男二偷看女三手机的关键镜头标为废镜头的动机未明。",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H008",
+      "text": "周明地库访客定位打卡显示昨天6:51在斜坡东侧，但林满月记得同一时间他正在机房外贴门玻璃连拍三张；周明如何进入地库、照片来源及为何第一时间发进工作群未明。",
+      "planted_ch": 2,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H009",
+      "text": "王姐限林满月十分钟内解释工作群照片，否则按责任书追责；林满月如何应对未明。",
+      "planted_ch": 2,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 11
+    },
+    {
+      "id": "H010",
+      "text": "陆淮舟提出炒CP与营业期公开否认限制，林满月以编剧身份配合出镜；正式合同与出镜条款未落，后续影响未明。",
+      "planted_ch": 2,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H011",
+      "text": "陆淮舟称临时救场效果不好随时撤，救场效果及是否正式签约未明。",
+      "planted_ch": 2,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H012",
+      "text": "周明称地库访客卡昨天下午借给外聘剪辑拍空镜素材，但未提供外聘剪辑姓名、公司及借卡记录；外聘剪辑身份与照片实际拍摄者未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 8
+    },
+    {
+      "id": "H013",
+      "text": "地库消防通道监控昨天18:45到18:55文件缺失，今天上午十点左右被格式化；谁操作、是否与照片事件有关未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H014",
+      "text": "正式合同附件第三页地库临时访客权限审批单显示申请人周明、审批人王姐，申请时间为昨天下午五点四十；王姐为何批准及与照片发群的关系未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H015",
+      "text": "王姐要求监控不查、说明避开时间冲突与打卡矛盾，并让周明找外聘剪辑删原图；其压制动机未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H016",
+      "text": "林满月发现合同附件第三页审批单后决定先核对合同附件，陆助理称拿时没细翻附件；附件中是否还有未核信息未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 4
+    },
+    {
+      "id": "H017",
+      "text": "王姐在群称责任书按约生效，今晚热度补不上按签的走；今晚热度能否补上及责任书后果未明。",
+      "planted_ch": 3,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 5
+    },
+    {
+      "id": "H018",
+      "text": "合同附件第五页素材授权补充条款由王姐账号在17:42追加，未在群里发版本更新；电子流只有追加记录，没有删除或替换记录。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H019",
+      "text": "合同附件纸质版第四页被手撕缺失，原七页变六页；谁撕走、为何撕走未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 6
+    },
+    {
+      "id": "H020",
+      "text": "林满月去还对讲机五六分钟期间，据小鹿说周明到场务棚称找场务拿道具单并翻素材本，合同夹就摊在林满月桌上；周明是否与第四页缺失有关未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 6
+    },
+    {
+      "id": "H021",
+      "text": "蓝V认证置顶弹幕“合同附件里少了一页——你数数看。”带官方账号编号，来源与身份未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H022",
+      "text": "王姐私信约林满月明天上午九点办公室谈合同附件，未提前因后果与责任书，谈什么未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 5
+    },
+    {
+      "id": "H023",
+      "text": "15秒预热视频使用地库照片打卡记录与周明机房外走廊截图并排，文案“时间线自己会说话”，审核通过发布后周明在群里质问；后续冲突未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H024",
+      "text": "补充条款授权节目组使用现场监控截帧等非正式拍摄物料预热，与王姐此前要求“监控不查”的口径并存；条款效力与用途未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H025",
+      "text": "王姐在审批单17:40申请后两分钟追加素材授权补充条款，动机及其与周明地库权限审批的关系未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H026",
+      "text": "热度条从冷区下限到温区下沿后，王姐私信语气被小鹿认为变软；今晚热度是否算补上、责任书后果是否解除未明。",
+      "planted_ch": 4,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 5
+    },
+    {
+      "id": "H027",
+      "text": "周明素材本里层夹着撕痕毛茬新、页脚王丽17:38、签名横线空白的纸角，蓝V弹幕提示'别签。他要把你的签名补上去。'——伪造林满月签名的企图是否会实施、如何应对未明",
+      "planted_ch": 5,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 6
+    },
+    {
+      "id": "H028",
+      "text": "首期宣发由林满月牵头，王姐称干好了责任书是废纸、干不好随时出得来——首期宣发成效与责任书最终走向未明",
+      "planted_ch": 5,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 10
+    },
+    {
+      "id": "H029",
+      "text": "首次合体录制排期周四上午7号棚，录制效果与现场变数未明",
+      "planted_ch": 5,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 9
+    },
+    {
+      "id": "H030",
+      "text": "第四页笔迹鉴定结果未出，可能进一步固定周明伪造签名的证据。",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 9
+    },
+    {
+      "id": "H031",
+      "text": "海城图文快印小票扫描时间17:38与王丽电子流审批单生成时间一致，且背面有“林…满…月，对，就这个。”字样，指向周明伪造签名的制版来源。",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 8
+    },
+    {
+      "id": "H032",
+      "text": "周明素材本夹层纸角下午消失，去向不明。",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H033",
+      "text": "陆淮舟离开时说“附页那页纸，埋谁不是埋”，其对此事的知情程度或所握信息未明。",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H034",
+      "text": "陆淮舟头顶心动值标签从0闪到1又落回0，异常波动的含义未明",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H035",
+      "text": "蓝V置顶弹幕'你防住了纸上的签名，防不住他手里的笔画。'暗示伪造签名事件仍有后续",
+      "planted_ch": 6,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H036",
+      "text": "陌生号码声称握有地库照片原始文件，要求林满月独自前往；林满月回复‘定’，后续赴约/取证未明。",
+      "planted_ch": 7,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 8
+    },
+    {
+      "id": "H037",
+      "text": "林满月将周明标废的男二镜头重命名‘鱼饵-勿删’并加密，准备用作诱饵，后续是否引周明上钩未明。",
+      "planted_ch": 7,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H038",
+      "text": "陆淮舟离开时说‘第四页的约定，我说话算话’——具体约定内容与第四页后续影响未明。",
+      "planted_ch": 7,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H039",
+      "text": "陆淮舟心动值标签第三次出现0→1→0回落；林满月总结规律为工作时间恒0、非工作近距离接触闪1，原因未知。",
+      "planted_ch": 7,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 19
+    },
+    {
+      "id": "H040",
+      "text": "蓝V认证置顶弹幕再次出现：‘你剪得出修罗场，剪不出他看你的那零点几秒’，来源身份未明。",
+      "planted_ch": 7,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H041",
+      "text": "SD卡第11帧拍到疑似陆淮舟的人影（高个、帽檐压后颈），时间戳18:50，距周明打卡记录只差一分钟——陆淮舟为何会在那分钟站在外聘剪辑镜头后面？",
+      "planted_ch": 8,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H042",
+      "text": "SD卡照片导出4次，有人拿原始文件来回对齐时间没对齐干净——谁在对齐时间、目的是什么？",
+      "planted_ch": 8,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H043",
+      "text": "外聘剪辑说'卡里拍到的那个人，看的是你站的那个位置'——具体含义与后续影响未明",
+      "planted_ch": 8,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H044",
+      "text": "林满月设暗号'我把帧拉满了'作为应急信号，若发出则小鹿转U盘给陆助理——是否触发未明",
+      "planted_ch": 8,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H045",
+      "text": "周明在导播台留后门，切备录信号到不明端口号（非节目组内网也非台里审片系统前缀），目的与用途未明",
+      "planted_ch": 9,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H046",
+      "text": "陆淮舟手绘图背面写'那天有人比你先到'——谁比林满月先到风井、看到了什么未明",
+      "planted_ch": 9,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 17
+    },
+    {
+      "id": "H047",
+      "text": "陆淮舟给位置不给原因、给图不给答案，每次卡在刚好够林满月往下走一步不够看清全貌的地方——他手里到底握着什么未明",
+      "planted_ch": 9,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H048",
+      "text": "笔迹鉴定结果确认第四页签名系临摹伪造，林满月截图存档未转发未发群——后续如何使用未明",
+      "planted_ch": 9,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 10
+    },
+    {
+      "id": "H049",
+      "text": "陆淮舟第四次标签闪动0→1→0发生在递完纸转身走时，递完东西转身就走算不算近距离接触——规律边界模糊",
+      "planted_ch": 9,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H050",
+      "text": "导播台的不明端口号前缀既非台里内网也非审片系统，王姐严禁林满月掺和此事，该端口的用途、背后操作者与王姐的关联未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H051",
+      "text": "陆淮舟称“第四页的约定只兑现一半”，另一半约定的内容、兑现条件未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 19
+    },
+    {
+      "id": "H052",
+      "text": "载有伪造林满月签名的第四页文件创建于202X年9月12日，早于林满月入职日期（9月26日）两周，说明伪造签名的布局早于林满月入职，布局者与目的未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H053",
+      "text": "带蓝V认证的置顶弹幕突然卡断，如同被人为掐断，其来源、被干扰的原因与干扰者身份未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H054",
+      "text": "陆淮舟此次与林满月近距离接触时，头顶心动值标签未出现此前的0→1→0闪动，打破了之前的规律，原因未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 19
+    },
+    {
+      "id": "H055",
+      "text": "陆方要求48小时内出具编剧负责人权限边界的书面确认，否则启动艺人方违约审查，能否按时出具、是否触发违约未明",
+      "planted_ch": 10,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H056",
+      "text": "匿名论坛发布《爆<心动倒计时>女编剧靠睡顶流拿资源，私会照流出》的帖子，配图为林满月推消防通道门的侧影，来源为导播台端口传出",
+      "planted_ch": 11,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H057",
+      "text": "陆淮舟称第四页的约定只兑现一半，另一半约定内容未明",
+      "planted_ch": 11,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 19
+    },
+    {
+      "id": "H058",
+      "text": "导播台不明端口的用途及背后操作者未明",
+      "planted_ch": 11,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H059",
+      "text": "素材架旧海报的蓝V标识与机房玻璃门外陆淮舟头顶红底弹幕末尾的蓝V标识相似，来源不明",
+      "planted_ch": 11,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H061",
+      "text": "陆淮舟头顶红底置顶弹幕内容为‘想让他救你的糊综？拿你自己换’，来源与含义不明",
+      "planted_ch": 11,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H062",
+      "text": "周明的“鱼饵-勿删.mp4”文件内容及作用",
+      "planted_ch": 12,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H063",
+      "text": "陆淮舟心动值标签锁的原因及打破规则的例外情况",
+      "planted_ch": 12,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 19
+    },
+    {
+      "id": "H064",
+      "text": "王丽不让碰的鱼饵镜头是台里的什么备用预案",
+      "planted_ch": 12,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H065",
+      "text": "匿名论坛黑料配图的来源是否为导播台端口",
+      "planted_ch": 12,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H066",
+      "text": "陆淮舟提出的48小时内找到端口操作者的条件能否达成，伪造签名事件的完整证据能否交付",
+      "planted_ch": 15,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H067",
+      "text": "王丽与端口操作者的关联是什么",
+      "planted_ch": 15,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H068",
+      "text": "端口操作者从林满月入职前两周就开始布局的目的是什么",
+      "planted_ch": 15,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H069",
+      "text": "陆淮舟如何获得伪造签名事件的完整证据",
+      "planted_ch": 15,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H070",
+      "text": "王丽背后的高层交易对象未明，林满月追问但王丽拒绝透露",
+      "planted_ch": 16,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H071",
+      "text": "碎片上的综艺部总监签名指向可能涉及高层的布局",
+      "planted_ch": 16,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 17
+    },
+    {
+      "id": "H072",
+      "text": "黑料二次发酵的来源和传播路径未明",
+      "planted_ch": 16,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H073",
+      "text": "碎片上的综艺部总监签名指向高层交易，可能涉及更广布局",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 17
+    },
+    {
+      "id": "H074",
+      "text": "新IP绑定总监办公室电脑，暗示端口操作者可能与总监有关",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 18
+    },
+    {
+      "id": "H075",
+      "text": "威胁短信和照片表明林满月被监视，调查风险升级",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 18
+    },
+    {
+      "id": "H076",
+      "text": "新IP绑定总监办公室电脑，暗示端口操作者可能与总监有关，需进一步调查总监的参与程度",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 18
+    },
+    {
+      "id": "H077",
+      "text": "威胁短信和照片表明林满月被监视，调查风险升级，可能影响后续行动安全",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 18
+    },
+    {
+      "id": "H078",
+      "text": "陆淮舟的条件和证据交付设置时限，需在48小时内找到端口操作者，否则证据无法获取",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H079",
+      "text": "陆淮舟手绘图背面写'那天有人比你先到'，林满月发消息问那个人是不是陆淮舟本人",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H080",
+      "text": "外聘剪辑在公寓楼外监视林满月，戴银色表带与快印店取件人同款",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H081",
+      "text": "碎片编号F070的F是风井、070是总监办公室房间号，暗示总监与风井检修点的关联",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H082",
+      "text": "陆淮舟的48小时倒计时条件与端口操作者调查进展挂钩",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H083",
+      "text": "陆淮舟手绘图背面写'那天有人比你先到'——那个人，是不是你？",
+      "planted_ch": 17,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H084",
+      "text": "第四页约定第二条：陆淮舟自愿成为林满月的'弹幕屏蔽器'，在双方正式确认关系之前，陆淮舟的心动值标签对林满月不可见，且陆淮舟将主动屏蔽自身心动值数据，防止弹幕系统干扰林满月的判断。约定生效条件：林满月完成对综艺部总监的证据闭环。",
+      "planted_ch": 19,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 21
+    },
+    {
+      "id": "H085",
+      "text": "陆淮舟在电话中称'从现在开始，你不是调查者了。你是猎物。而我，可能已经把你推进了陷阱。'——陆淮舟是否真的把林满月推进了陷阱，还是在保护她？",
+      "planted_ch": 19,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 21
+    },
+    {
+      "id": "H086",
+      "text": "陌生号码发来短信'你查到底了。轮到我了。'——这个陌生号码是谁？'轮到我了'意味着什么？",
+      "planted_ch": 19,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 20
+    },
+    {
+      "id": "H087",
+      "text": "电梯门关闭瞬间闪现蓝V认证字'你终于知道，为什么他从不让你查到底。'——蓝V弹幕再次出现，来源与身份仍未明",
+      "planted_ch": 19,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 20
+    },
+    {
+      "id": "H088",
+      "text": "地库的灯一盏接一盏灭了——是否有人在切断电源？林满月是否安全？",
+      "planted_ch": 19,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 20
+    },
+    {
+      "id": "H089",
+      "text": "陆淮舟在电话中称'可能已经把你推进了陷阱'——陆淮舟是否真的把林满月推进了陷阱，还是在保护她？",
+      "planted_ch": 20,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H090",
+      "text": "监控视频中风衣背影身高比陆淮舟矮且左腿拖拽，身份不明",
+      "planted_ch": 21,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H091",
+      "text": "倒计时突然减少一个多小时，原因不明（系统误差或吞噬现实）",
+      "planted_ch": 21,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 23
+    },
+    {
+      "id": "H092",
+      "text": "电视台地下二层废弃机房的邀请目的及风险",
+      "planted_ch": 21,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H093",
+      "text": "第 7 个关键点激活的具体含义",
+      "planted_ch": 21,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 23
+    },
+    {
+      "id": "H094",
+      "text": "陌生男声声称的‘真正的演播厅’具体指何处",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H095",
+      "text": "黑影的真实身份及为何与入职首日监控重合",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H096",
+      "text": "红色弹幕显示的坐标 [B2 - 备用服务器间] 指向何物",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H097",
+      "text": "猎物身份反转的具体含义",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H098",
+      "text": "独家经纪协议甲方空白，具体绑定对象未明",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H099",
+      "text": "总监发布的私生活视频具体内容及来源未明",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H100",
+      "text": "倒计时停止在 10 小时 15 分的原因及后续影响未明",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 22
+    },
+    {
+      "id": "H101",
+      "text": "林满月掌心伤口的来源（警告框渗血）未明",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H102",
+      "text": "证据公开的具体内容是什么，是否足以扳倒幕后黑手",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H103",
+      "text": "倒计时定格在 09 小时 41 分 59 秒后的后续影响及规则变化",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H104",
+      "text": "外聘剪辑在机房内做最后确认的具体操作及目的",
+      "planted_ch": 22,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H105",
+      "text": "海岛特辑的具体拍摄地与航路信息",
+      "planted_ch": 23,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 24
+    },
+    {
+      "id": "H106",
+      "text": "打印摘要中‘立即回收或隔离’建议的执行主体是谁",
+      "planted_ch": 23,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H107",
+      "text": "外聘剪辑是否知晓海岛拍摄地的真实用途",
+      "planted_ch": 23,
+      "due_chapter": 0,
+      "status": "resolved",
+      "resolved_ch": 24
+    },
+    {
+      "id": "H108",
+      "text": "新合同联合出品方“沧蓝文化”的真实身份——陆淮舟也是今天第一次见到这个名字",
+      "planted_ch": 24,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H109",
+      "text": "节目组货机的设备押运名单如何拿到、报备后谁能上岛",
+      "planted_ch": 24,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H110",
+      "text": "“评估室”是什么，高危实验体进去后会发生什么",
+      "planted_ch": 24,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H111",
+      "text": "外聘剪辑被“内部扣款：已执行”的系统控制，扣款方是谁",
+      "planted_ch": 24,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H112",
+      "text": "陆淮舟主动解除心动值屏蔽，标签重现并持续上涨，会带来什么",
+      "planted_ch": 24,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    }
+  ]
+}

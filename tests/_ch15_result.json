@@ -1,0 +1,99 @@
+{
+  "elapsed": 81.52447390556335,
+  "passed": true,
+  "score": 92,
+  "title": "入职当天的访问记录",
+  "observe": {
+    "applied": true,
+    "reason": "",
+    "characters": 4,
+    "facts": 9,
+    "items": 3,
+    "new_hooks": 4,
+    "resolved_hooks": 0,
+    "relations": 3,
+    "emotions": 4,
+    "time_advance": "从48小时倒计时29小时16分47秒推进到28小时57分"
+  },
+  "log": [
+    {
+      "step": "plan",
+      "ok": true,
+      "meta": {
+        "role": "planner",
+        "provider": "火山豆包",
+        "model": "doubao-seed-character-260628",
+        "usage": {
+          "prompt_tokens": 5219,
+          "completion_tokens": 564,
+          "total_tokens": 5783
+        },
+        "attempts": 1,
+        "failover": false,
+        "cost": {
+          "ts": "2026-10-29 18:06:15",
+          "chapter": 15,
+          "role": "planner",
+          "provider": "火山豆包",
+          "model": "doubao-seed-character-260628",
+          "prompt_tokens": 5219,
+          "completion_tokens": 564,
+          "total_tokens": 5783,
+          "estimated": false,
+          "cost": 0.0
+        }
+      }
+    },
+    {
+      "step": "write",
+      "ok": true,
+      "meta": {
+        "role": "writer",
+        "provider": "火山豆包",
+        "model": "doubao-seed-character-260628",
+        "usage": {
+          "prompt_tokens": 26607,
+          "completion_tokens": 1541,
+          "total_tokens": 28148
+        },
+        "attempts": 1,
+        "failover": false,
+        "cost": {
+          "ts": "2026-10-29 18:06:37",
+          "chapter": 15,
+          "role": "writer",
+          "provider": "火山豆包",
+          "model": "doubao-seed-character-260628",
+          "prompt_tokens": 26607,
+          "completion_tokens": 1541,
+          "total_tokens": 28148,
+          "estimated": false,
+          "cost": 0.0
+        }
+      },
+      "words": 2144
+    },
+    {
+      "step": "audit",
+      "ok": true,
+      "score": 92,
+      "critical": 0
+    },
+    {
+      "step": "revise#1",
+      "ok": false,
+      "score": 92,
+      "critical": 0,
+      "remaining": 2
+    },
+    {
+      "step": "observe",
+      "ok": true
+    },
+    {
+      "step": "summary",
+      "ok": true
+    }
+  ],
+  "summary_len": 580
+}

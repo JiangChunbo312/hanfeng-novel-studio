@@ -1,0 +1,92 @@
+{
+  "hooks": [
+    {
+      "id": "H001",
+      "text": "证据屏属性栏编辑记录（时间戳九月二十号）未被打开查看，周砺未点，编辑者身份待揭",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H002",
+      "text": "解之扬瘦金体签名的原始委托单扫描件被推送到直播最后一帧，解之扬已三年未公开露面，单子由谁递进去成谜",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H003",
+      "text": "岑晚手中的空白委托单（“死局回收所——待填”）编号空着，约定待她查到周砺背后还有别人时填写",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H004",
+      "text": "匿名推送“第一条规则，别认你没做过的事”，暗示背后有规则体系与发信人",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H005",
+      "text": "九月走慈善基金会的那两千万至今未查",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H006",
+      "text": "证据屏属性栏的编辑记录（时间戳九月二十号）周砺拒绝打开，编辑者身份未明",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H007",
+      "text": "带解之扬瘦金体签名的原始委托单扫描件被推送到直播最后一帧，解之扬三年未露面，单子由谁递进去未知",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H008",
+      "text": "岑晚手中空白委托单编号空置，约定待她查到周砺背后还有别人时填写",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H009",
+      "text": "匿名推送“第一条规则，别认你没做过的事”，发信人与所谓规则体系未知",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H010",
+      "text": "九月走慈善基金会的那两千万至今无人查证",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    },
+    {
+      "id": "H011",
+      "text": "沈弈称“我还有个附件没传”，附件内容未明",
+      "planted_ch": 1,
+      "due_chapter": 0,
+      "status": "open",
+      "resolved_ch": null
+    }
+  ]
+}
